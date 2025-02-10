@@ -1,11 +1,13 @@
+import { Link } from 'react-router'
+
 export function Concerts() {
   return (
     <div>
       <ul>
-        <li>Paris</li>
-        <li>Berlin</li>
-        <li>Madrid</li>
-        <li>London</li>
+        <li><Link to="/concerts/paris">Paris</Link></li>
+        <li><Link to="/concerts/berlin">Berlin</Link></li>
+        <li><Link to="/concerts/madrid">Madrid</Link></li>
+        <li><Link to="/concerts/london">London</Link></li>
       </ul>
     </div>
   )
