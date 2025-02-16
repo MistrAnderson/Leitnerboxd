@@ -1,22 +1,28 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PWABadge from './PWABadge.tsx'
 import store from './store/store'
 import './App.css'
 
 function render() {
-  const darkMode = store.getState()
-  console.log(darkMode.darkMode)
+  const state = store.getState()
+  console.log(state.settings)
+  // console.log(state.quiz)
 
-  const el = document.getElementById('mode')
+  const elDarkMode = document.getElementById('mode')
+  const elCards = document.getElementById('cards')
 
-  el.innerHTML = darkMode.darkMode ? 'dark' : 'light'
-
+  if (elDarkMode) elDarkMode.innerHTML = state.settings.darkMode ? 'dark' : 'light'
+  if (elCards) elCards.innerHTML = state.settings.numberOfCardsPerDay
 }
 
 function App() {
   const [count, setCount] = useState(0)
 
-  store.subscribe(render)
+  // subscribe only once
+  useEffect(() => {
+    const unsubscribe = store.subscribe(render)
+    return () => unsubscribe() 
+  }, [])
 
   return (
     <>
@@ -26,11 +32,22 @@ function App() {
           count is {count}
         </button>
 
-        <button onClick={() => store.dispatch({ type: 'darkMode/switch' })}>
+        <button onClick={() => store.dispatch({ type: 'settings/setCardPerDay', payload: 5 })}>
+          set card number to 5
+        </button>
+
+        <button onClick={() => store.dispatch({ type: 'settings/setCardPerDay', payload: 10 })}>
+          set card number to 10
+        </button>
+
+        <button onClick={() => store.dispatch({ type: 'settings/switchDarkMode' })}>
           Switch modes
         </button>
         <p>
           Current app state is <span id="mode">light</span> Mode
+        </p>
+        <p>
+          Current app state is <span id="cards">10</span> Cards
         </p>
       </div>
       <PWABadge />

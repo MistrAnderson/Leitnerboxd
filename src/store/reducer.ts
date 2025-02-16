@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
-import darkReducer from './dark-mode/darkSlice'
+import settingsReducer from './settings/settingsSlice'
+import quizReducer from './quiz/quizSlice'
 
 
 const rootReducer = combineReducers({
-  darkMode: darkReducer
+  settings: settingsReducer,
+  quiz: quizReducer
 })
 
 export default rootReducer
