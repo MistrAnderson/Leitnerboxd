@@ -4,6 +4,7 @@ import { Test } from './components/Test.tsx'
 import { Concerts } from './components/Concerts.tsx'
 import { Concert } from './components/Concert.tsx'
 import App from './App.tsx'
+import Cards from './components/Cards.tsx'
 
 export default function Router() {
   return (
@@ -18,6 +19,10 @@ export default function Router() {
           <Route path="concerts" >
             <Route index element={ <Concerts /> } />
             <Route path=":id" element={ <Concert /> } />
+          </Route>
+
+          <Route path="cards" >
+            <Route index element={ <Cards /> } />
           </Route>
 
         </Route>

@@ -1,29 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import PWABadge from './PWABadge.tsx'
 import store from './store/store'
 import './App.css'
 
-function render() {
-  const state = store.getState()
-  console.log(state.settings)
-  // console.log(state.quiz)
-
-  const elDarkMode = document.getElementById('mode')
-  const elCards = document.getElementById('cards')
-
-  if (elDarkMode) elDarkMode.innerHTML = state.settings.darkMode ? 'dark' : 'light'
-  if (elCards) elCards.innerHTML = state.settings.numberOfCardsPerDay
-}
 
 function App() {
   const [count, setCount] = useState(0)
-
-  // subscribe only once
-  useEffect(() => {
-    const unsubscribe = store.subscribe(render)
-    return () => unsubscribe() 
-  }, [])
-
+  const state = store.getState()
+  const darkMode = useSelector(state => state.settings.darkMode)
+  
   return (
     <>
       <h1>leitner-app-test</h1>
@@ -44,10 +30,10 @@ function App() {
           Switch modes
         </button>
         <p>
-          Current app state is <span id="mode">light</span> Mode
+          Current app state is { darkMode ? <span>dark</span> : <span>light</span> } Mode
         </p>
         <p>
-          Current app state is <span id="cards">10</span> Cards
+          Current app state is TODO SHOW CARDS Cards
         </p>
       </div>
       <PWABadge />
