@@ -21,6 +21,6 @@ export interface ITheme {
 }
 
 export interface ILeitnerDB {
-  cards: ICard,
-  themes: ITheme
+  cards: ICard[],
+  themes: ITheme[]
 }

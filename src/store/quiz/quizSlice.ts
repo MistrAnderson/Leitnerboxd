@@ -1,6 +1,5 @@
 import { Action } from '../interfaces'
 
-// const initialState = false
 const initialState = {
   isInQuiz: false,
   currentCard: 1
