@@ -1,5 +1,6 @@
 import { ICard } from "../idb/interfaces";
 
+// TODO: do the css of the components
 export default function Card( { cardInfo } : { cardInfo: ICard }) {
   return (
     <div>

@@ -1,14 +1,13 @@
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import PWABadge from './PWABadge.tsx'
-import store from './store/store'
 import './App.css'
 
 
 function App() {
   const [count, setCount] = useState(0)
-  const state = store.getState()
   const darkMode = useSelector(state => state.settings.darkMode)
+  const dispatch = useDispatch()
   
   return (
     <>
@@ -18,15 +17,15 @@ function App() {
           count is {count}
         </button>
 
-        <button onClick={() => store.dispatch({ type: 'settings/setCardPerDay', payload: 5 })}>
+        <button onClick={() => dispatch({ type: 'settings/setCardPerDay', payload: 5 })}>
           set card number to 5
         </button>
 
-        <button onClick={() => store.dispatch({ type: 'settings/setCardPerDay', payload: 10 })}>
+        <button onClick={() => dispatch({ type: 'settings/setCardPerDay', payload: 10 })}>
           set card number to 10
         </button>
 
-        <button onClick={() => store.dispatch({ type: 'settings/switchDarkMode' })}>
+        <button onClick={() => dispatch({ type: 'settings/switchDarkMode' })}>
           Switch modes
         </button>
         <p>

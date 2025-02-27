@@ -1,24 +1,10 @@
-import { useEffect, useState } from "react"
-import { idb } from "../idb/idb"
 import { ICard } from "../idb/interfaces"
 import Card from "./Card"
+import { useDispatch, useSelector } from "react-redux"
 
 export default function Cards() {
-  const [cards, setCards] = useState<ICard[]>()
-
-  async function fetchData() {
-    const allCards = await idb.getAll('cards')
-    setCards(allCards)
-  }
-
-  async function handleButton(card: ICard) {
-    idb.add('cards', card)
-    fetchData()
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
+  const cards: ICard[] = useSelector(state => state.cards.cards)
+  const dispatch = useDispatch()
 
   const card1: ICard = { name: "card1", question: "q1", answer: "a1", level: 1, previousEncounter: "2025-02-18" }
   const card2: ICard = { name: "card2", question: "q2", answer: "a2", level: 1, previousEncounter: "2025-02-18" }
@@ -28,13 +14,13 @@ export default function Cards() {
 
   return (
     <div>
-      <button onClick={() => handleButton(card1)}> add card1 </button>
-      <button onClick={() => handleButton(card2)}> add card2 </button>
-      <button onClick={() => handleButton(card3)}> add card3 </button>
-      <button onClick={() => handleButton(card4)}> add card4 </button>
-      <button onClick={() => handleButton(card5)}> add card5 </button>
+      <button onClick={() => dispatch({ type: "cards/addCard", payload: card1 })}> add card1 </button>
+      <button onClick={() => dispatch({ type: "cards/addCard", payload: card2 })}> add card2 </button>
+      <button onClick={() => dispatch({ type: "cards/addCard", payload: card3 })}> add card3 </button>
+      <button onClick={() => dispatch({ type: "cards/addCard", payload: card4 })}> add card4 </button>
+      <button onClick={() => dispatch({ type: "cards/addCard", payload: card5 })}> add card5 </button>
 
-      <button onClick={() => idb.clear('cards')}> clear all </button>
+      <button onClick={() => dispatch({ type: "cards/clearCards" })} > clear all </button>
 
       <div>
         {cards?.map((card) => (

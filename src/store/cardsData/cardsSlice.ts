@@ -1,4 +1,3 @@
-import { idb } from '../../idb/idb'
 import { Action } from '../interfaces'
 
 const initialState = {
@@ -6,17 +5,32 @@ const initialState = {
   themes: []
 }
 
-export default async function cardsReducer(state = initialState, action: Action) {
+export default function cardsReducer(state = initialState, action: Action) {
   switch (action.type) {
-    case "card/saveState": {
+    case "data/saveState": {
+        // TODO: Add logic to dump state in idb
       return {
       }
     }
-    case "card/loadState": {
+    case "data/loadState": {
       return {
         ...state,
-        cards: await idb.getAll("cards"),
-        themes: await idb.getAll("themes")
+        // FIX: Need to use Redux Thunk 
+        // to handle async logic
+        // cards: await idb.getAll("cards"),
+        // themes: await idb.getAll("themes")
+      }
+    }
+    case "cards/addCard": {
+      return {
+        ...state,
+        cards: state.cards.concat(action.payload)
+      }
+    }
+    case "cards/clearCards": {
+      return {
+        ...state,
+        cards: []
       }
     }
     default:
