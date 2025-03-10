@@ -15,9 +15,22 @@ export default defineConfig({
 
     manifest: {
       name: 'leitner-app',
-      short_name: 'leitner-app',
+      short_name: 'leit',
       description: 'An app to practice spaced retrieval',
+      start_url: '/',
       theme_color: '#ffffff',
+      icons: [
+        {
+          src: 'public/icon-192x192.png',
+          sizes: '192x192',
+          type: 'image/png'
+        },
+        {
+          src: 'public/icon-512x512.png',
+          sizes: '512x512',
+          type: 'image/png'
+        }
+      ]
     },
 
     workbox: {
