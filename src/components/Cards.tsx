@@ -1,9 +1,10 @@
 import { ICard } from "../idb/interfaces"
-import Card from "./Card"
-import { useDispatch, useSelector } from "react-redux"
+// import Card from "./Card"
+import { useDispatch } from "react-redux"
+// import { useDispatch, useSelector } from "react-redux"
 
 export default function Cards() {
-  const cards: ICard[] = useSelector(state => state.cards.cards)
+  // const cards: ICard[] = useSelector(state => state.cards.cards)
   const dispatch = useDispatch()
 
   const card1: ICard = { name: "card1", question: "q1", answer: "a1", level: 1, previousEncounter: "2025-02-18" }
@@ -22,11 +23,13 @@ export default function Cards() {
 
       <button onClick={() => dispatch({ type: "cards/clearCards" })} > clear all </button>
 
-      <div>
-        {cards?.map((card) => (
-          <Card cardInfo={card} />
-        ))}
-      </div>
+      {/*
+        <div>
+          {cards?.map((card) => (
+            <Card cardInfo={card} />
+          ))}
+        </div>
+      */}
     </div>
   )
 }

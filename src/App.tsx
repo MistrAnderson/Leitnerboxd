@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+// import { useDispatch, useSelector } from 'react-redux'
 import PWABadge from './PWABadge.tsx'
 import './App.css'
 
 
 function App() {
   const [count, setCount] = useState(0)
-  const darkMode = useSelector(state => state.settings.darkMode)
+  // const darkMode = useSelector(state => state.settings.darkMode)
   const dispatch = useDispatch()
   
   return (
@@ -29,7 +30,7 @@ function App() {
           Switch modes
         </button>
         <p>
-          Current app state is { darkMode ? <span>dark</span> : <span>light</span> } Mode
+        {/* Current app state is { darkMode ? <span>dark</span> : <span>light</span> } Mode */}
         </p>
         <p>
           Current app state is TODO SHOW CARDS Cards

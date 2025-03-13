@@ -21,12 +21,13 @@ export default function cardsReducer(state = initialState, action: Action) {
         // themes: await idb.getAll("themes")
       }
     }
-    case "cards/addCard": {
-      return {
-        ...state,
-        cards: state.cards.concat(action.payload)
-      }
-    }
+    // TODO: Fix action error
+    // case "cards/addCard": {
+    //   return {
+    //     ...state,
+    //     cards: state.cards.concat(action.payload)
+    //   }
+    // }
     case "cards/clearCards": {
       return {
         ...state,
