@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { NavLink } from "react-router";
-import store from '../store/store'
+import { store } from '../store/store'
 
 function render() {
   const state = store.getState()

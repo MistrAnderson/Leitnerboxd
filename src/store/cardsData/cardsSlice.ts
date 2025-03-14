@@ -22,12 +22,12 @@ export default function cardsReducer(state = initialState, action: Action) {
       }
     }
     // TODO: Fix action error
-    // case "cards/addCard": {
-    //   return {
-    //     ...state,
-    //     cards: state.cards.concat(action.payload)
-    //   }
-    // }
+    case "cards/addCard": {
+      return {
+        ...state,
+        cards: state.cards.concat(action.payload)
+      }
+    }
     case "cards/clearCards": {
       return {
         ...state,
