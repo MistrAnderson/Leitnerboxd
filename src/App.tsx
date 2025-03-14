@@ -1,15 +1,15 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-// import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch, useAppSelector } from './store/hooks.ts'
 import PWABadge from './PWABadge.tsx'
 import './App.css'
 
 
 function App() {
   const [count, setCount] = useState(0)
-  // const darkMode = useSelector(state => state.settings.darkMode)
-  const dispatch = useDispatch()
-  
+  const darkMode = useAppSelector(state => state.settings.darkMode)
+
+  const dispatch = useAppDispatch()
+
   return (
     <>
       <h1>leitner-app-test</h1>
@@ -30,8 +30,9 @@ function App() {
           Switch modes
         </button>
         <p>
-        {/* Current app state is { darkMode ? <span>dark</span> : <span>light</span> } Mode */}
+          Current app state is {darkMode ? <span>dark</span> : <span>light</span>} Mode
         </p>
+        {/* TODO: show cards */}
         <p>
           Current app state is TODO SHOW CARDS Cards
         </p>
