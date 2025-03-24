@@ -1,0 +1,9 @@
+.card {
+  display: flex;
+  margin: 2rem;
+  background: red;
+}
+
+.card > * {
+  padding: 1rem;
+}
