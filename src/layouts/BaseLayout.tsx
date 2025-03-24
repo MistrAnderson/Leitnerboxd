@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router'
-import { Navbar } from '../components/Navbar.tsx'
+import { Navbar } from '@/components/navbar/Navbar.tsx'
 
 export function BaseLayout() {
   return (

@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { useAppDispatch, useAppSelector } from './store/hooks.ts'
-import PWABadge from './PWABadge.tsx'
-import './App.css'
+import { useAppDispatch, useAppSelector } from '@/store/hooks.ts'
+import PWABadge from '@/PWABadge.tsx'
+import '@/App.css'
 
 
 function App() {
