@@ -1,8 +1,7 @@
 import { ICard } from "@/idb/interfaces"
 import Card from "@components/card/Card"
-// import { useDispatch } from "react-redux"
-// import { useDispatch, useSelector } from "react-redux"
 import { useAppDispatch, useAppSelector } from "@/store/hooks"
+import { add, clear } from "@/store/cardsData/cardsSlice"
 
 export default function Cards() {
   // TODO: Understand type 'state' and why it does not have 'cards'
@@ -17,13 +16,13 @@ export default function Cards() {
 
   return (
     <div>
-      <button onClick={() => dispatch({ type: "cards/addCard", payload: card1 })}> add card1 </button>
-      <button onClick={() => dispatch({ type: "cards/addCard", payload: card2 })}> add card2 </button>
-      <button onClick={() => dispatch({ type: "cards/addCard", payload: card3 })}> add card3 </button>
-      <button onClick={() => dispatch({ type: "cards/addCard", payload: card4 })}> add card4 </button>
-      <button onClick={() => dispatch({ type: "cards/addCard", payload: card5 })}> add card5 </button>
+      <button onClick={() => dispatch(add(card1))}> add card1 </button>
+      <button onClick={() => dispatch(add(card2))}> add card2 </button>
+      <button onClick={() => dispatch(add(card3))}> add card3 </button>
+      <button onClick={() => dispatch(add(card4))}> add card4 </button>
+      <button onClick={() => dispatch(add(card5))}> add card5 </button>
 
-      <button onClick={() => dispatch({ type: "cards/clearCards" })} > clear all </button>
+      <button onClick={() => dispatch(clear())} > clear all </button>
 
       <div>
         {cards?.map((card) => (
