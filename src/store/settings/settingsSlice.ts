@@ -1,4 +1,4 @@
-import { Action } from '../interfaces'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   darkMode: false,
@@ -7,33 +7,16 @@ const initialState = {
   maxLevelOfCards: 5
 }
 
-export default function settingsReducer(state = initialState, action: Action) {
-  switch (action.type) {
-    case "settings/switchDarkMode": {
-      return {
-        ...state,
-        darkMode: !state.darkMode
-      }
-    }
-    case "settings/notifications": {
-      return {
-        ...state,
-        notif: !state.notif
-      }
-    }
-    case "settings/setCardPerDay": {
-      return {
-        ...state,
-        numberOfCardsPerDay: action.payload
-      }
-    }
-    case "settings/setMaxLevel": {
-      return {
-        ...state,
-        maxLevelOfCards: action.payload
-      }
-    }
-    default:
-      return state
+const settingsSlice = createSlice({
+  name: "settings",
+  initialState,
+  reducers: {
+    switchDarkMode: (state) => { state.darkMode = !state.darkMode },
+    notifIsActive: (state) => { state.notif = !state.notif },
+    setCardPerDay: (state, action) => { state.numberOfCardsPerDay = action.payload },
+    setMaxLevel: (state, action) => { state.maxLevelOfCards = action.payload },
   }
-}
+})
+
+export const { switchDarkMode, notifIsActive, setCardPerDay, setMaxLevel} = settingsSlice.actions
+export default settingsSlice.reducer
