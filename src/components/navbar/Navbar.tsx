@@ -11,6 +11,7 @@ export function Navbar() {
     <nav>
       <NavLink to="/" end>Home</NavLink>
       <NavLink to="/cards">Cards</NavLink>
+      <NavLink to="/quiz">Quiz</NavLink>
 
       <button onClick={() => dispatch(switchDarkMode())}>
         { darkMode ? <span>dark</span> : <span>light</span> }

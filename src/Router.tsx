@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router'
 import { BaseLayout } from '@/layouts/BaseLayout.tsx'
 import App from '@/App.tsx'
 import Cards from '@components/cards/Cards.tsx'
+import Quiz from '@/components/quiz/Quiz'
 
 export default function Router() {
   return (
@@ -14,6 +15,10 @@ export default function Router() {
 
           <Route path="cards" >
             <Route index element={ <Cards /> } />
+          </Route>
+
+          <Route path="quiz" >
+            <Route index element={ <Quiz /> } />
           </Route>
 
         </Route>
