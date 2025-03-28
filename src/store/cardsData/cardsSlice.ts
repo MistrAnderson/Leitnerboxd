@@ -41,7 +41,17 @@ const cardSlice = createSlice({
   name: "cards",
   initialState,
   reducers: {
-    add: (state, action) => { state.cards.push(action.payload) },
+    add: (state, action) => { 
+      const newCard: ICard = {
+        name: action.payload?.name || "Card name",
+        question: action.payload?.question || "question",
+        answer: action.payload?.answer || "answer",
+        level: action.payload?.level || "1",
+        previousEncounter: action.payload?.previousEncounter || new Date().toISOString(),
+      }
+      state.cards.push(newCard) 
+    },
+
     clear: (state) => { state.cards = [] }
   },
   extraReducers(builder) {
