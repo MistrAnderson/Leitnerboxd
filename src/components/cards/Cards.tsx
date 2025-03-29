@@ -11,11 +11,11 @@ export default function Cards() {
 
   console.log(cards)
 
-  const card1: ICard = { name: "card1", question: "q1", answer: "a1", level: 1, previousEncounter: "2025-02-18" }
-  const card2: ICard = { name: "card2", question: "q2", answer: "a2", level: 1, previousEncounter: "2025-02-18" }
-  const card3: ICard = { name: "card3", question: "q3", answer: "a3", level: 1, previousEncounter: "2025-02-18" }
-  const card4: ICard = { name: "card4", question: "q4", answer: "a4", level: 1, previousEncounter: "2025-02-18" }
-  const card5: ICard = { name: "card5", question: "q5", answer: "a5", level: 1, previousEncounter: "2025-02-18" }
+  const card1: ICard = {id: crypto.randomUUID(), name: "card1", question: "q1", answer: "a1", level: 1, previousEncounter: new Date("2025-02-18") }
+  const card2: ICard = {id: crypto.randomUUID(), name: "card2", question: "q2", answer: "a2", level: 1, previousEncounter: new Date("2025-02-18") }
+  const card3: ICard = {id: crypto.randomUUID(), name: "card3", question: "q3", answer: "a3", level: 1, previousEncounter: new Date("2025-02-18") }
+  const card4: ICard = {id: crypto.randomUUID(), name: "card4", question: "q4", answer: "a4", level: 1, previousEncounter: new Date("2025-02-18") }
+  const card5: ICard = {id: crypto.randomUUID(), name: "card5", question: "q5", answer: "a5", level: 1, previousEncounter: new Date("2025-02-18") }
 
   return (
     <div>
