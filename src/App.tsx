@@ -6,9 +6,8 @@ import '@/App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-  const darkMode = useAppSelector(state => state.settings.darkMode)
-
   const dispatch = useAppDispatch()
+  const darkMode = useAppSelector(state => state.settings.darkMode)
 
   return (
     <>
