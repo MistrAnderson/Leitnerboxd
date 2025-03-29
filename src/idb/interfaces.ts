@@ -4,7 +4,7 @@ export interface ICard {
   question: string,
   answer: string,
   level: number,
-  previousEncounter: Date,
+  previousEncounter: string,
   
 }
 
