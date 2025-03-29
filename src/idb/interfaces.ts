@@ -1,10 +1,10 @@
 export interface ICard {
-  id?: number,
+  id: number,
   name: string
   question: string,
   answer: string,
   level: number,
-  previousEncounter: string,
+  previousEncounter: Date,
   
 }
 
@@ -13,7 +13,7 @@ export interface ICategory {
 }
 
 export interface ITheme {
-  id?: number,
+  id: number,
   name: string,
   description: string,
   cards: ICard[],

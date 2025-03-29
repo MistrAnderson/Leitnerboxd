@@ -4,7 +4,7 @@ import { ILeitnerDB } from './interfaces';
 async function initDB(): Promise<IDBPDatabase<ILeitnerDB>> {
   return openDB<ILeitnerDB>("leitnerDB", 1, {
     upgrade(db) {
-      db.createObjectStore('cards', {keyPath: 'id', autoIncrement: true})
+      db.createObjectStore('cards', {keyPath: 'id'})
     },
   })
 }
