@@ -7,10 +7,6 @@ export function getTodayCards(cards: ICard[]): ICard[] {
 
   cards.map((card) => {
     const nextEncounter = getCalculateNextEncounter(new Date(card.previousEncounter), card.level)
-    console.log(nextEncounter)
-    console.log(formatDate(nextEncounter))
-    console.log(formatDate(new Date()))
-    console.log(formatDate(nextEncounter) <= formatDate(new Date()))
 
     if (formatDate(nextEncounter) <= formatDate(new Date())) {
       newCardsList.push(card)
