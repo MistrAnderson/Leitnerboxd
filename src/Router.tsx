@@ -3,6 +3,7 @@ import App from '@/App.tsx'
 import Cards from '@components/cards/Cards.tsx'
 import Quiz from '@components/quiz/Quiz'
 import Home from '@components/home/Home'
+import About from '@components/about/About'
 
 export default function Router() {
   return (
@@ -19,6 +20,10 @@ export default function Router() {
 
           <Route path="quiz" >
             <Route index element={ <Quiz /> } />
+          </Route>
+
+          <Route path="about" >
+            <Route index element={ <About /> } />
           </Route>
 
         </Route>
