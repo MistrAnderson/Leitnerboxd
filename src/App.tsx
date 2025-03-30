@@ -1,44 +1,34 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '@/store/hooks.ts'
+import { Outlet } from 'react-router'
+import Header from '@/components/header/Header.tsx'
 import PWABadge from '@/PWABadge.tsx'
 import '@/App.css'
+import { loadCardsFromIDB, saveCardsToIDB } from './store/cardsData/cardsSlice'
 
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
   const dispatch = useAppDispatch()
-  const darkMode = useAppSelector(state => state.settings.darkMode)
+  const state = useAppSelector(state => state)
+
+
+  useEffect(() => {
+    dispatch(loadCardsFromIDB())
+  
+    const handleSave = () => dispatch(saveCardsToIDB())
+    window.addEventListener("beforeunload", handleSave)
+  
+    return () => window.addEventListener("beforeunload", handleSave)
+  }, [])
+  
+  useEffect(() => { dispatch(saveCardsToIDB()) }, [state])
 
   return (
     <>
-      <h1>leitner-app-test</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-
-        <button onClick={() => dispatch({ type: 'settings/setCardPerDay', payload: 5 })}>
-          set card number to 5
-        </button>
-
-        <button onClick={() => dispatch({ type: 'settings/setCardPerDay', payload: 10 })}>
-          set card number to 10
-        </button>
-
-        <button onClick={() => dispatch({ type: 'settings/switchDarkMode' })}>
-          Switch modes
-        </button>
-        <p>
-          Current app state is {darkMode ? <span>dark</span> : <span>light</span>} Mode
-        </p>
-        {/* TODO: show cards */}
-        <p>
-          Current app state is TODO SHOW CARDS Cards
-        </p>
-      </div>
+      <Header />
+      <Outlet />
       <PWABadge />
     </>
   )
 }
 
-export default App
