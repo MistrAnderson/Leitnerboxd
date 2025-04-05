@@ -17,16 +17,16 @@ export default function Card( { cardInfo } : { cardInfo: ICard }) {
   return (
     <div className={`${style.card} ${isShowingAnswer ? style.active : ""}`}>
 
-      <div className={style.cardRow}>
+      <div>
         <span>{ isShowingAnswer ? "Answer" : "Question" }</span>
         <span>Nv: {cardInfo.level}</span>
       </div>
 
-      <div className={style.cardRow}>
+      <div>
         <p>{ isShowingAnswer ? cardInfo.answer : cardInfo.question }</p>
       </div>
 
-      <div className={style.cardRow}>
+      <div>
         <span>{cardInfo.previousEncounter}</span>
         <span>{formatedNextEncounter}</span>
       </div>

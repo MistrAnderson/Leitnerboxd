@@ -1,9 +1,18 @@
 .card {
   display: flex;
+  flex-direction: column;
   margin: 2rem;
-  background: red;
+  padding: 1rem;
+  background-color: var(--mid-blue);
+  border-radius: 15px;
 }
 
-.card > * {
+.card > div {
+  display: flex;
   padding: 1rem;
+  justify-content: space-between;
+}
+
+.active {
+  background-color: var(--light-blue);
 }
