@@ -11,6 +11,14 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --white: #DEFFFF;
+  --black: #00171F;
+  --correct: #349F51;
+  --wrong: #A81616;
+  --light-blue: #00A8E8;
+  --mid-blue: #007EA7;
+  --dark-blue: #003459;
 }
 
 a {
@@ -26,6 +34,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
 }
