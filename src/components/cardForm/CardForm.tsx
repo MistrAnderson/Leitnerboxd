@@ -1,6 +1,8 @@
 import { add } from "@/store/cardsData/cardsSlice"
 import { useAppDispatch } from "@/store/hooks"
 import React, { useState } from "react"
+import Button from "../button/Button"
+import style from './cardForm.module.css'
 
 export default function CardForm() {
   const dispatch = useAppDispatch()
@@ -17,10 +19,23 @@ export default function CardForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="question" value={formData.question} onChange={handleChange} placeholder="Question" />
-      <input name="answer" value={formData.answer} onChange={handleChange} placeholder="Answer" />
-      <button type="submit">Add Card</button>
-    </form>
+    <div>
+      <p className={style.header1}>Add Card</p>
+
+      <form onSubmit={handleSubmit} className={style.form}>
+
+        <div>
+          <label>Question</label>
+          <textarea name="question" value={formData.question} onChange={handleChange} placeholder="What's the best operating system ?" />
+        </div>
+
+        <div>
+          <label>Answer</label>
+          <textarea name="answer" value={formData.answer} onChange={handleChange} placeholder="Linux" />
+        </div>
+
+        <Button type="submit">Add</Button>
+      </form>
+    </div>
   )
 }

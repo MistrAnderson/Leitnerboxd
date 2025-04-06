@@ -1,0 +1,15 @@
+.container {
+  background-color: var(--light-blue);
+  padding: 2rem;
+  margin: 2rem;
+}
+
+form > div {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.header1 {
+  font-size: 1.5rem;
+}
