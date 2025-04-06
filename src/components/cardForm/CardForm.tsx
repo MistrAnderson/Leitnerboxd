@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import Button from "../button/Button"
 import style from './cardForm.module.css'
 
-export default function CardForm() {
+export default function CardForm({ onAddCard }) {
   const dispatch = useAppDispatch()
   const [formData, setFormData] = useState({question: "", answer: ""})
 
@@ -16,6 +16,7 @@ export default function CardForm() {
     e.preventDefault()
     dispatch(add({...formData}))
     setFormData({question: "", answer: ""})
+    onAddCard()
   }
 
   return (

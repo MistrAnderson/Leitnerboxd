@@ -14,6 +14,9 @@ export default function App() {
   const state = useAppSelector(state => state)
   const [showModal, setShowModal] = useState(false)
 
+  const closeModal = () => setShowModal(false)
+  const openModal = () => setShowModal(true)
+
 
   useEffect(() => {
     dispatch(loadCardsFromIDB())
@@ -28,10 +31,10 @@ export default function App() {
 
   return (
     <>
-      <Header onAddCard={() => setShowModal(true)} />
+      <Header onAddCard={openModal} />
 
       <Modal show={showModal} onClose={() => setShowModal(false)}>
-        <CardForm />
+        <CardForm onAddCard={closeModal}/>
       </Modal>
 
       <Outlet />
