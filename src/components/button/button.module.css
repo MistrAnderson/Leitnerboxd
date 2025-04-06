@@ -1,28 +1,26 @@
 /* Button.module.css */
 .button {
-  padding: 12px 24px;
-  border-radius: 8px;
+  padding: 0.5em 1em;
+  border-radius: 15px;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1.5em;
   transition: background 0.3s ease-in-out;
+  border-radius: 15px;
 }
 
-/* Main Button */
 .main {
-  background-color: #007bff;
+  background: var(--light-blue);
   color: white;
 }
 
-/* Correct Button */
 .correct {
-  background-color: green;
+  background-color: var(--correct);
   color: white;
 }
 
-/* Wrong Button */
 .wrong {
-  background-color: red;
+  background-color: var(--wrong);
   color: white;
 }
 
