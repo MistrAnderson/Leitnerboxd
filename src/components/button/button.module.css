@@ -1,5 +1,5 @@
-/* Button.module.css */
 .button {
+  all: unset;
   padding: 0.75rem 2rem;
   border-radius: 15px;
   border: none;
