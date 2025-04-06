@@ -9,6 +9,7 @@ export default function Card( { cardInfo } : { cardInfo: ICard }) {
   const prevEncounter: Date = new Date(cardInfo.previousEncounter)
   const nextEncounter: Date = getCalculateNextEncounter(prevEncounter, cardInfo.level)
   const formatedNextEncounter: string = formatDate(nextEncounter)
+  const formatedPrevEncouner: string = formatDate(prevEncounter)
 
   const switchShowAnswer = () => {
     setIsShowingAnswer(! isShowingAnswer)
@@ -27,7 +28,7 @@ export default function Card( { cardInfo } : { cardInfo: ICard }) {
       </div>
 
       <div>
-        <span>{cardInfo.previousEncounter}</span>
+        <span>{formatedPrevEncouner}</span>
         <span>{formatedNextEncounter}</span>
       </div>
 
