@@ -3,9 +3,11 @@ import Card from '@components/card/Card'
 import { ICard } from '@/idb/interfaces'
 import style from './home.module.css'
 import Button from '../button/Button'
+import { useNavigate } from 'react-router'
 
 export default function Home() {
   const cards: ICard[] = useAppSelector(state => state.cards.cards)
+  const navigator = useNavigate()
   
   const card: ICard = {
       id: crypto.randomUUID(),
@@ -34,7 +36,7 @@ export default function Home() {
         <Card key={card.id} cardInfo={card} />
       ))}
 
-      <Button className={style.quizBtn}>Quiz</Button>
+      <Button onClick={() => navigator('/quiz')} className={style.quizBtn}>Quiz</Button>
     </div>
   )
 }
