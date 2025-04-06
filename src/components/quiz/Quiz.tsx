@@ -4,12 +4,16 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks"
 import { updateCard } from "@/store/cardsData/cardsSlice"
 import { useMemo, useState } from "react"
 import { getTodayCards } from "@/lib/Date"
+import style from './quiz.module.css'
+import Button, { CorrectButton, WrongButton } from "../button/Button"
+import { useNavigate } from "react-router"
 
 export default function Quiz() {
   const cards: ICard[] = useAppSelector(state => state.cards.cards)
   const dispatch = useAppDispatch()
   const [cardIndex, setCardIndex] = useState(0)
   const todayCards = useMemo(() => getTodayCards(cards), [])
+  const navigator = useNavigate()
 
   const allCardsWereSeen = cardIndex >= todayCards.length
 
@@ -37,13 +41,14 @@ export default function Quiz() {
         <>
           <Card key={todayCards[cardIndex].id} cardInfo={todayCards[cardIndex]} />
 
-          <div>
-            <button onClick={() => handleCardKnowledge(false)}>Wrong</button>
-            <button onClick={() => handleCardKnowledge(true)}>Correct</button>
+          <div className={style.btnContainer}>
+            <WrongButton onClick={() => handleCardKnowledge(false)}>Wrong</WrongButton>
+            <CorrectButton onClick={() => handleCardKnowledge(true)}>Correct</CorrectButton>
           </div>
         </>
       )
       }
+      <Button onClick={() => navigator('/')}>EXIT</Button>
     </div>
   )
 }
