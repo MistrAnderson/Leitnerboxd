@@ -7,16 +7,20 @@ import '@/App.css'
 import { loadCardsFromIDB, saveCardsToIDB } from './store/cardsData/cardsSlice'
 import Modal from './components/modal/Modal'
 import CardForm from './components/cardForm/CardForm'
+import Settings from './components/settings/Settings'
 
 
 export default function App() {
   const dispatch = useAppDispatch()
   const state = useAppSelector(state => state)
-  const [showModal, setShowModal] = useState(false)
+  const [showAddCard, setShowAddCard] = useState(false)
+  const [showSettings, setShowSettings] = useState(false)
 
-  const closeModal = () => setShowModal(false)
-  const openModal = () => setShowModal(true)
+  const closeAddCard = () => setShowAddCard(false)
+  const openAddCard = () => setShowAddCard(true)
 
+  const closeSettings = () => setShowSettings(false)
+  const openSettings = () => setShowSettings(true)
 
   useEffect(() => {
     dispatch(loadCardsFromIDB())
@@ -31,10 +35,14 @@ export default function App() {
 
   return (
     <>
-      <Header onAddCard={openModal} />
+      <Header onAddCard={openAddCard} openSettings={openSettings} />
 
-      <Modal show={showModal} onClose={() => setShowModal(false)}>
-        <CardForm onAddCard={closeModal}/>
+      <Modal show={showAddCard} onClose={closeAddCard}>
+        <CardForm onAddCard={closeAddCard}/>
+      </Modal>
+
+      <Modal show={showSettings} onClose={closeSettings}>
+        <Settings />
       </Modal>
 
       <Outlet />

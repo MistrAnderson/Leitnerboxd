@@ -22,15 +22,6 @@ export default function Home() {
     <div className={style.container}>
       <Card cardInfo={card} />
       <Card cardInfo={card} />
-      <Card cardInfo={card} />
-      <Card cardInfo={card} />
-      <Card cardInfo={card} />
-      <Card cardInfo={card} />
-      <Card cardInfo={card} />
-      <Card cardInfo={card} />
-      <Card cardInfo={card} />
-      <Card cardInfo={card} />
-      <Card cardInfo={card} />
 
       {cards?.map((card) => (
         <Card key={card.id} cardInfo={card} />
