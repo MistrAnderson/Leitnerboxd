@@ -1,0 +1,27 @@
+# Ignore node_modules — you're rebuilding them inside the container
+node_modules
+
+# Git stuff
+.git
+.gitignore
+
+# OS/IDE clutter
+.DS_Store
+*.swp
+.vscode
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment and secrets
+.env
+
+# Build output (if you’re copying only from `dist`)
+build
+dist
+
+# Tests or docs (optional)
+tests
+*.md
+
