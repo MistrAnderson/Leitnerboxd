@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { idb } from '@/idb/idb'
+import { getDB } from '@/idb/idb'
 import { ICard, ITheme } from '@/idb/interfaces'
 
 
@@ -16,14 +16,17 @@ const initialState: CardState = {
 }
 
 export const loadCardsFromIDB = createAsyncThunk<ICard[]>("cards/loadCardsFromIDB", async () => {
+  const idb = await getDB()
   return await idb.getAll("cards")
 })
 
 export const addCardToIDB = createAsyncThunk("cards/addCardToIDB", async (newCard) => {
+  const idb = await getDB()
   return await idb.put("cards", newCard)
 })
 
 export const saveCardsToIDB = createAsyncThunk("cards/saveCardsToIDB", async (_, { getState }) => {
+  const idb = await getDB()
   const tx = idb.transaction("cards", "readwrite")
   const store = tx.objectStore("cards")
 

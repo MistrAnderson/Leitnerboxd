@@ -1,13 +1,19 @@
 import { openDB, IDBPDatabase } from 'idb';
 import { ILeitnerDB } from './interfaces';
 
-async function initDB(): Promise<IDBPDatabase<ILeitnerDB>> {
-  return openDB<ILeitnerDB>("leitnerDB", 1, {
+let dbPromise: Promise<IDBPDatabase<ILeitnerDB>> | null = null
+
+async function getDB(): Promise<IDBPDatabase<ILeitnerDB>> {
+  if (dbPromise) return dbPromise;
+
+  dbPromise = openDB<ILeitnerDB>("leitnerDB", 1, {
     upgrade(db) {
-      db.createObjectStore('cards', {keyPath: 'id'})
+      db.createObjectStore('cards', { keyPath: 'id' })
     },
   })
+
+  return dbPromise
 }
 
 
-export const idb = await initDB()
+export { getDB } 
