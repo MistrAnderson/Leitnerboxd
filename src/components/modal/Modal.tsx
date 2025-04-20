@@ -1,6 +1,12 @@
 import style from './modal.module.css'
 
-export default function Modal({ show, onClose, children }) {
+interface ModalProps {
+  show: boolean
+  onClose: (event: React.MouseEvent<HTMLDivElement>) => void
+  children: React.ReactNode
+}
+
+export default function Modal({ show, onClose, children }: ModalProps) {
   if (!show) return null
 
   return (

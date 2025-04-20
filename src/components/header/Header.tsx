@@ -1,7 +1,12 @@
 import { NavLink } from 'react-router'
 import style from './header.module.css'
 
-export default function Header({ onAddCard, openSettings }) {
+interface HeaderProps {
+  onAddCard: (event: React.MouseEvent<HTMLButtonElement>) => void
+  openSettings: (event: React.MouseEvent<HTMLButtonElement>) => void
+}
+
+export default function Header({ onAddCard, openSettings }: HeaderProps) {
   return (
     <div className={style.header}>
       <button onClick={openSettings}>Settings</button>

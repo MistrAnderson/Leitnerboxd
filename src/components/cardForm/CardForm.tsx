@@ -4,7 +4,11 @@ import React, { useState } from "react"
 import Button from "../button/Button"
 import style from './cardForm.module.css'
 
-export default function CardForm({ onAddCard }) {
+interface CardFormProps {
+  onAddCard: () => void
+}
+
+export default function CardForm({ onAddCard }: CardFormProps) {
   const dispatch = useAppDispatch()
   const [formData, setFormData] = useState({question: "", answer: ""})
 
