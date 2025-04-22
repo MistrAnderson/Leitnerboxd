@@ -61,6 +61,10 @@ const cardsSlice = createSlice({
       state.cards = state.cards.map(card => card.id === updatedCard.id ? { ...card, ...updatedCard } : card)
     },
 
+    deleteCard: (state, action: PayloadAction<string>) => {
+      state.cards = state.cards.filter(card => card.id != action.payload)
+    },
+
     clear: (state) => { state.cards = [] }
   },
   extraReducers(builder) {
@@ -81,5 +85,5 @@ const cardsSlice = createSlice({
   },
 })
 
-export const { add, clear, updateCard } = cardsSlice.actions
+export const { add, clear, updateCard, deleteCard } = cardsSlice.actions
 export default cardsSlice.reducer
