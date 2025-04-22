@@ -2,9 +2,12 @@ import { ICard } from "@/idb/interfaces";
 import style from "./card.module.css"
 import { useState } from "react";
 import { formatDate, getCalculateNextEncounter } from "@/lib/Date";
+import { deleteCard } from "@/store/cardsData/cardsSlice"
+import { useAppDispatch } from "@/store/hooks";
 
 export default function Card( { cardInfo } : { cardInfo: ICard }) {
   const [isShowingAnswer, setIsShowingAnswer] = useState(false)
+  const dispatch = useAppDispatch()
 
   const prevEncounter: Date = new Date(cardInfo.previousEncounter)
   const nextEncounter: Date = getCalculateNextEncounter(prevEncounter, cardInfo.level)
@@ -31,10 +34,16 @@ export default function Card( { cardInfo } : { cardInfo: ICard }) {
         <span>{formatedPrevEncouner}</span>
         <span>{formatedNextEncounter}</span>
       </div>
+      
+      <div>
+        <button onClick={switchShowAnswer}>
+          { ! isShowingAnswer ? "Show" : "Hide" } answer
+        </button>
 
-      <button onClick={switchShowAnswer}>
-        { ! isShowingAnswer ? "Show" : "Hide" } answer
-      </button>
+        <button onClick={() => dispatch(deleteCard(cardInfo.id))}>
+          X
+        </button>
+      </div>
     </div>
   )
 }

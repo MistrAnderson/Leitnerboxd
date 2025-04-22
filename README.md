@@ -6,21 +6,41 @@
 
 ### Self-host
 
-For now, you can clone this repo and run it yourself. You can use the app as a standard website or install it via your browser, as it is a **PWA** (Progressive Web App).
+For now, you can clone this repo and run it yourself, either on a web server or in a **docker** container. You can use the app as a standard website or install it via your browser, as it is a **PWA** (Progressive Web App).
 
 ```sh  
 git clone https://github.com/MistrAnderson/LeitnerApp  
 ```
 
-Then run:
+#### Web Server
+Clone the repo and build the website:
 
 ```sh  
+git clone https://github.com/MistrAnderson/Leitnerboxd.git
+cd Leitnerboxd
 npm run build  
 ```
 
 This will generate all the static files.
 
-You can then host the `build/` folder on any web server you like (Apache, Nginx, Vercel, etc.).
+You can then host the `build/` folder on any web server you like (Apache, Nginx, Vercel, etc).
+
+#### Docker
+You can run the image from Dockerhub:
+```sh
+docker run -d -p 3000:80 --name leitnerboxd mstrndrsn/leitnerboxd
+```
+
+> [!WARNING]
+> Please note that the Dockerhub image might be behind in commits as CI/CD workflow is not yet integrated.
+
+Or build it yourself from this repo:
+```sh
+git clone https://github.com/MistrAnderson/Leitnerboxd.git
+cd Leitnerboxd
+docker build -t leitnerboxd .
+docker run -d -p 3000:80 --name leitnerboxd leitnerboxd
+```
 
 ### Website
 
